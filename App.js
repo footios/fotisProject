@@ -7,15 +7,10 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-native';
-import { black } from 'ansi-colors';
+import { StyleSheet, View } from 'react-native';
 
-import ListItem from './src/components/ListItem/ListItem';
-
-const instructions = Platform.select({
-	ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-	android: 'Double tap R on your keyboard to reload,\n' + 'Shake or press menu button for dev menu'
-});
+import InputElements from './src/components/UI/InputElements/InputElements'
+import PlacesOutput from './src/components/PlacesOutput/PlacesOutput'
 
 export default class App extends Component {
 	state = {
@@ -33,20 +28,16 @@ export default class App extends Component {
 	};
 
 	render() {
-		const placesOutput = this.state.places.map((place, index) => <ListItem key={index} placeName={place} />);
+	
 		return (
 			<View style={styles.container}>
-				<View style={styles.inputContainer}>
-					<TextInput
-						style={styles.placeInput}
-						placeholder="An awesome place"
-						value={this.state.placeName}
-						onChangeText={this.placeNameChangeHandler}
-					/>
-					<Button style={styles.placeButton} title="Add" onPress={this.placeSubmitHandler} />
-				</View>
+        <InputElements 
+        placeName={this.state.placeName} 
+        placeNameChanged={this.placeNameChangeHandler}
+        placeSubmited={this.placeSubmitHandler}
+        />
 				<View style={styles.listContainer} > 
-				{placesOutput}
+				<PlacesOutput places={this.state.places} />
 				</View>
 			</View>
 		);
