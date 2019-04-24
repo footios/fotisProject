@@ -20,11 +20,21 @@ export default class App extends Component {
 		this.setState((prevState) => ({ places: prevState.places.concat(placeName) }));
 	};
 
+	placesDeletedItem = (index) => {
+		placesOutput = 
+		this.setState(prevState => {
+			return {
+				places: prevState.places.filter((place, i) => i !== index)
+			}
+		})
+	 }
+ 
+
 	render() {
 		return (
 			<View style={styles.container}>
 				<PlaceInput onPlaceAdded={this.placeAddedHandler} />
-				<PlaceList places={this.state.places} />
+				<PlaceList places={this.state.places} onItemDeleted={this.placesDeletedItem} />
 			</View>
 		);
 	}
