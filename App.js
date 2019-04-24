@@ -11,6 +11,7 @@ import { StyleSheet, View } from 'react-native';
 
 import PlaceInput from './src/components/PlaceInput/PlaceInput';
 import PlaceList from './src/components/PlaceList/PlaceList';
+import placeImage from './src/assets/dendra.jpg';
 
 export default class App extends Component {
 	state = {
@@ -20,13 +21,14 @@ export default class App extends Component {
 		this.setState((prevState) => ({
 			places: prevState.places.concat({
 				key: Math.random(),
-				value: placeName
+				name: placeName,
+				image: placeImage
 			})
 		}));
 	};
 
 	placeDeletedItem = (key) => {
-		placesOutput = this.setState((prevState) => {
+		this.setState((prevState) => {
 			return {
 				places: prevState.places.filter((place) => place.key !== key)
 			};
