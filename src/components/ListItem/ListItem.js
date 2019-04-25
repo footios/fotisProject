@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     placeImage: {
-        marginRight: 8,
+		marginRight: 8,
+		// When fetching img from web, must set height/width!
         height: 30,
         width: 30
     }
